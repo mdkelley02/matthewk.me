@@ -1,0 +1,56 @@
+<!-- modal action -->
+<div class="modal-action m-0">
+  <label for="experience-modal" class="btn btn-sm absolute right-6 top-6">
+    <fa-icon [icon]="icons.arrowRight"></fa-icon>
+  </label>
+</div>
+<!-- modal content -->
+<div class="flex flex-col gap-4">
+  <div class="flex items-center gap-4">
+    <div class="w-24">
+      <img
+        class="rounded-xl"
+        [src]="experience.company.image"
+        [alt]="experience.company.name"
+      />
+    </div>
+    <div>
+      <h3 class="font-bold text-xl">{{ experience.company.name }}</h3>
+      <div class="flex gap-2">
+        <fa-icon [icon]="icons.calendar"></fa-icon>
+        <div>
+          {{ experience.company.startDate | date: "MMM yyyy" }} -
+          {{ experience.company.endDate | date: "MMM yyyy" }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col gap-4">
+    <div *ngFor="let pos of experience.positions" class="flex flex-col gap-4">
+      <!-- header -->
+      <div>
+        <div class="font-bold text-lg">{{ pos.title }}</div>
+        <div class="flex gap-2">
+          <fa-icon [icon]="icons.calendar"></fa-icon>
+          <div>
+            {{ pos.startDate | date: "MMM yyyy" }} -
+            {{ pos.endDate | date: "MMM yyyy" }}
+          </div>
+        </div>
+      </div>
+      <!-- technologies -->
+      <div
+        class="flex gap-2 flex-wrap"
+        *ngIf="pos.technologies?.length ?? 0 > 0"
+      >
+        <div *ngFor="let tech of pos.technologies" class="btn btn-xs">
+          {{ tech }}
+        </div>
+      </div>
+      <!-- bullets -->
+      <div class="list-ouside">
+        <li *ngFor="let bullet of pos.bullets">{{ bullet }}</li>
+      </div>
+    </div>
+  </div>
+</div>

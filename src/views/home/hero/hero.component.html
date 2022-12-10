@@ -1,0 +1,27 @@
+<div class="hero p-6 bg-base-300 shadow-1xl rounded-xl">
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+    <!-- image -->
+    <img
+      class="h-96 rounded-xl object-fit object-position shadow-2xl"
+      src="../../../assets/matthew_goes_to_bainbridge_island.jpg"
+    />
+    <!-- text -->
+    <div class="flex flex-col justify-center items-start max-w-96">
+      <h1 class="text-5xl font-bold">Matthew Kelley</h1>
+
+      <p class="py-6">
+        Software Engineer and Computer Science student based out of Boise, Idaho
+      </p>
+
+      <div class="flex gap-3">
+        <a *ngFor="let hb of heroButtons" [href]="hb.link" target="_blank">
+          <div class="tooltip hover:cursor-pointer" [attr.data-tip]="hb.link">
+            <button class="btn btn-sm">
+              <fa-icon [icon]="hb.icon" size="lg"></fa-icon>
+            </button>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
